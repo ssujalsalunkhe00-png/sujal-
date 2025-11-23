@@ -1,0 +1,111 @@
+# calculator.py
+
+def add(a, b): return a + b
+def sub(a, b): return a - b
+def mul(a, b): return a * b
+def div(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "Error: Division by zero"
+
+def percent(a, b): return (a / 100) * b
+def power(a, b): return a ** b
+
+print("----- SIMPLE PYTHON CALCULATOR -----")
+
+a = float(input("Enter first number: "))
+b = float(input("Enter second number: "))
+
+print("""
+1. Add
+2. Subtract
+3. Multiply
+4. Divide
+5. Percent (a% of b)
+6. Power (a^b)
+""")
+
+choice = int(input("Choose operation (1-6): "))
+
+if choice == 1:
+    print("Result =", add(a, b))
+elif choice == 2:
+    print("Result =", sub(a, b))
+elif choice == 3:
+    print("Result =", mul(a, b))
+elif choice == 4:
+    print("Result =", div(a, b))
+elif choice == 5:
+    print("Result =", percent(a, b))
+elif choice == 6:
+    print("Result =", power(a, b))
+else:
+    print("Invalid choice")
+# app.py
+import streamlit as st
+
+st.set_page_config(page_title="Simple Calculator", page_icon="🧮")
+st.title("🧮 Simple Calculator")
+
+# Inputs
+a = st.number_input("Enter first number:", value=0.0)
+b = st.number_input("Enter second number:", value=0.0)
+
+operation = st.selectbox(
+    "Choose Operation",
+    ["Add", "Subtract", "Multiply", "Divide", "Percent (a% of b)", "Power (a^b)"]
+)
+
+# Logic
+if st.button("Calculate"):
+    if operation == "Add":
+        result = a + b
+    elif operation == "Subtract":
+        result = a - b
+    elif operation == "Multiply":
+        result = a * b
+    elif operation == "Divide":
+        try:
+            result = a / b
+        except ZeroDivisionError:
+            result = "Error: Division by zero"
+    elif operation == "Percent (a% of b)":
+        result = (a / 100) * b
+    elif operation == "Power (a^b)":
+        result = a ** b
+    
+    st.success(f"Result: {result}")
+streamlit
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+# Simple Calculator (Python + Streamlit)
+
+This project contains:
+
+- A simple Python calculator (console)
+- A Streamlit web calculator
+- Ready for GitHub + Streamlit Cloud deployment
+
+## Run Streamlit app
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+
+---
+
+# ✅ **6) GitHub Upload Steps**
+
+Run these commands inside your project folder:
+
+```bash
+git init
+git add .
+git commit -m "Simple Calculator in Python and Streamlit"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/your-repo-name.git
+git push -u origin main
+https://your-app-name.streamlit.app
